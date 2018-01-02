@@ -10,7 +10,7 @@ end
 gem 'rails', '5.1.2'
 gem 'bcrypt',         '3.1.11'
 gem 'faker',          '1.7.3'
-gem 'carrierwave'#,             '1.1.0'
+gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
 gem 'fog-aws',                 '2.0.0'
 gem 'nokogiri',                '1.8.1'
@@ -34,7 +34,7 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks', '5.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '2.7.0'
-
+gem 'net-ssh'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
