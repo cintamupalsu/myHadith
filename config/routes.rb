@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   root 'dashboard#home'
   get  '/help' ,   to: 'dashboard#help'
   get  '/about',   to: 'dashboard#about'
@@ -13,4 +17,5 @@ Rails.application.routes.draw do
   #/c8
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 end
