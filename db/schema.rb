@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103004442) do
+ActiveRecord::Schema.define(version: 20180106113931) do
+
+  create_table "chapters", force: :cascade do |t|
+    t.string "english_name"
+    t.string "arabic_name"
+    t.string "english_translation"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -46,6 +55,16 @@ ActiveRecord::Schema.define(version: 20180103004442) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "verses", force: :cascade do |t|
+    t.text "content"
+    t.integer "number"
+    t.integer "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id", "number"], name: "index_verses_on_chapter_id_and_number"
+    t.index ["chapter_id"], name: "index_verses_on_chapter_id"
   end
 
 end
