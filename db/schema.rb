@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180107052756) do
     t.string "country_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_name"], name: "index_languages_on_country_name"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -86,7 +87,6 @@ ActiveRecord::Schema.define(version: 20180107052756) do
     t.datetime "updated_at", null: false
     t.index ["chapter_id", "number"], name: "index_verses_on_chapter_id_and_number"
     t.index ["chapter_id"], name: "index_verses_on_chapter_id"
-    t.index [nil], name: "index_verses_on_country_name"
   end
 
 end

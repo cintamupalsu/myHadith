@@ -5,6 +5,6 @@ class CreateLanguages < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :verses, [:country_name]
+    add_index :languages, [:country_name]
   end
 end
