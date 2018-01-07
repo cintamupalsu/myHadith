@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106113931) do
+ActiveRecord::Schema.define(version: 20180106225547) do
 
   create_table "chapters", force: :cascade do |t|
     t.string "english_name"
     t.string "arabic_name"
     t.string "english_translation"
     t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "country_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,9 +47,23 @@ ActiveRecord::Schema.define(version: 20180106113931) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "translations", force: :cascade do |t|
+    t.string "content"
+    t.integer "number"
+    t.integer "language_id"
+    t.integer "verse_id"
+    t.integer "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_translations_on_chapter_id"
+    t.index ["language_id"], name: "index_translations_on_language_id"
+    t.index ["verse_id"], name: "index_translations_on_verse_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -55,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180106113931) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["language_id"], name: "index_users_on_language_id"
   end
 
   create_table "verses", force: :cascade do |t|
@@ -65,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180106113931) do
     t.datetime "updated_at", null: false
     t.index ["chapter_id", "number"], name: "index_verses_on_chapter_id_and_number"
     t.index ["chapter_id"], name: "index_verses_on_chapter_id"
+    t.index [nil], name: "index_verses_on_country_name"
   end
 
 end
